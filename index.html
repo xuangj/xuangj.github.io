@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xuang Jin | Software Engineer</title>
+    <style>
+        /* Sleek, simple CSS */
+        :root {
+            --primary-color: #111;
+            --accent-color: #0056b3;
+            --text-color: #333;
+            --bg-color: #fafafa;
+        }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-color); 
+            background-color: var(--bg-color);
+            line-height: 1.6; 
+        }
+
+        /* Navigation Header */
+        header { 
+            background: var(--primary-color); 
+            color: #fff; 
+            padding: 1.5rem 0; 
+            text-align: center; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header nav a { 
+            color: #ccc; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            font-weight: 500; 
+            cursor: pointer; 
+            transition: color 0.2s ease;
+        }
+        header nav a:hover, header nav a.active-link { 
+            color: #fff; 
+        }
+
+        /* Main Container */
+        .container { 
+            max-width: 800px; 
+            margin: 3rem auto; 
+            padding: 0 20px; 
+        }
+
+        /* Section Toggling */
+        .section { 
+            display: none; 
+            animation: fadeIn 0.4s ease-in-out; 
+        }
+        .section.active { 
+            display: block; 
+        }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        /* Typography & Elements */
+        h1, h2, h3 { color: var(--primary-color); }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .card { 
+            background: #fff;
+            border: 1px solid #eaeaea; 
+            border-radius: 8px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        .card h3 { margin-top: 0; margin-bottom: 5px; }
+        .tech-stack { 
+            color: var(--accent-color); 
+            font-size: 0.9em; 
+            font-weight: 500;
+            margin-bottom: 15px; 
+        }
+        
+        /* Contact Links */
+        .contact-links { margin-top: 2rem; }
+        .contact-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a id="nav-about" class="active-link" onclick="showSection('about')">About</a>
+        <a id="nav-experience" onclick="showSection('experience')">Experience</a>
+        <a id="nav-projects" onclick="showSection('projects')">Projects</a>
+    </nav>
+</header>
+
+<div class="container">
+    <!-- About Section -->
+    <div id="about" class="section active">
+        <h1>Hi, I'm Xuang Jin.</h1>
+        <p>I am a software engineer and full-stack web developer specializing in mobile applications, user interface design, and scalable web solutions. I hold a B.A. in Computer Science with a minor in Data Science from the University of Virginia.</p>
+        <p>My technical stack includes React, Next.js, Django, Python, JavaScript, and native Android development using Kotlin and Jetpack Compose. I am passionate about building clean, efficient, and user-centric applications, whether that means engineering a full-stack platform or designing an intuitive mobile interface.</p>
+        
+        <div class="contact-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            <a href="mailto:your.email@example.com">Email</a>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div id="experience" class="section">
+        <h2>Work Experience</h2>
+        <div class="card">
+            <h3>Contract Web Developer & Intern</h3>
+            <p><strong>Timberline Team Consulting</strong> | Jun 2025 – Present</p>
+            <p>Manage client websites on WordPress, execute staging-to-production environment migrations, and implement custom theme designs using Elementor. Perform quality assurance, SEO integrations, and responsive mobile layout optimization.</p>
+        </div>
+        <div class="card">
+            <h3>Head Teaching Assistant</h3>
+            <p><strong>Master Tutoring</strong> | Jun 2022 – Aug 2024</p>
+            <p>Led a team of teaching assistants, designed lesson plans, and managed administrative data to support daily course operations and student success.</p>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="section">
+        <h2>Selected Projects</h2>
+        <div class="card">
+            <h3>UVA Trading App</h3>
+            <p class="tech-stack">Django, PostgreSQL, Bootstrap, Heroku</p>
+            <p>A full-stack platform enabling university students to exchange goods without monetary transactions, promoting sustainable reuse within the campus community.</p>
+        </div>
+        <div class="card">
+            <h3>Campus Maps</h3>
+            <p class="tech-stack">Android, Kotlin, Jetpack Compose, Room SQLite, Google Maps SDK</p>
+            <p>An Android application that retrieves JSON data from a campus placemarks API to display dynamic locations, filtering map markers based on custom user tags and storing preferences locally.</p>
+        </div>
+        <div class="card">
+            <h3>Fitness Tracker</h3>
+            <p class="tech-stack">JavaScript, PHP, Bootstrap, PostgreSQL, Docker</p>
+            <p>A full-stack web application featuring relational database schemas, session management, and dynamic tracking controllers, developed entirely within a containerized environment.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSection(id) {
+        // Hide all sections
+        document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+        // Remove active styling from all nav links
+        document.querySelectorAll('header nav a').forEach(nav => nav.classList.remove('active-link'));
+        
+        // Show selected section
+        document.getElementById(id).classList.add('active');
+        // Add active styling to clicked link
+        document.getElementById('nav-' + id).classList.add('active-link');
+    }
+</script>
+
+</body>
+</html>
