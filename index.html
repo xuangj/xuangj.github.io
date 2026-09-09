@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Xuang Jin | Software Engineer</title>
     <style>
-        /* Sleek, simple CSS */
         :root {
             --primary-color: #111;
             --accent-color: #0056b3;
@@ -22,11 +22,11 @@
             line-height: 1.6; 
         }
 
-        /* Navigation Header */
+        /* Nav Header */
         header { 
-            background: var(--primary-color); 
+            background: #6a819c; 
             color: #fff; 
-            padding: 1.5rem 0; 
+            padding: 3rem 0; 
             text-align: center; 
             position: sticky;
             top: 0;
@@ -83,6 +83,14 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.05);
         }
         .card h3 { margin-top: 0; margin-bottom: 5px; }
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 10px 0 15px 0;
+            border: 1px solid #eaeaea;
+        }
         .tech-stack { 
             color: var(--accent-color); 
             font-size: 0.9em; 
@@ -91,15 +99,29 @@
         }
         
         /* Contact Links */
-        .contact-links { margin-top: 2rem; }
+        .contact-links { 
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
         .contact-links a {
             display: inline-block;
-            margin-right: 15px;
+            align-items: center;
+            gap: 8px;
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
+            transition: opacity 0.2s ease;
         }
-        .contact-links a:hover { text-decoration: underline; }
+        .contact-links a:hover { 
+            opacity: 0.7;
+        }
+        .contact-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
     </style>
 </head>
 <body>
@@ -116,13 +138,27 @@
     <!-- About Section -->
     <div id="about" class="section active">
         <h1>Hi, I'm Xuang Jin.</h1>
-        <p>I am a software engineer and full-stack web developer specializing in mobile applications, user interface design, and scalable web solutions. I hold a B.A. in Computer Science with a minor in Data Science from the University of Virginia.</p>
-        <p>My technical stack includes React, Next.js, Django, Python, JavaScript, and native Android development using Kotlin and Jetpack Compose. I am passionate about building clean, efficient, and user-centric applications, whether that means engineering a full-stack platform or designing an intuitive mobile interface.</p>
+        <p>I am a full-stack web developer specializing in UI design and scalable web solutions. I recently graduated from the University of Virginia with a degree in Computer Science with a minor in Data Science.</p>
+        <p>My technical stack includes React, Next.js, Django, Python, Java, JavaScript, and native Android development using Kotlin and Jetpack Compose. 
+            In my work, I strive to build user-centric applications that consider intuitive workflows, thoughtful design, and responsive interactions. </p>
         
         <div class="contact-links">
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-            <a href="mailto:your.email@example.com">Email</a>
+            <a href="Xuang_Jin_Resume.pdf" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
+                Resume
+            </a>
+            <a href="https://github.com/xuangj" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                GitHub
+            </a>
+            <a href="https://linkedin.com/in/xuangjin" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+            </a>
+            <a href="mailto:xuangjin@gmail.com">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Email
+            </a>
         </div>
     </div>
 
@@ -130,13 +166,18 @@
     <div id="experience" class="section">
         <h2>Work Experience</h2>
         <div class="card">
-            <h3>Contract Web Developer & Intern</h3>
+            <h3>Web Developer</h3>
             <p><strong>Timberline Team Consulting</strong> | Jun 2025 – Present</p>
             <p>Manage client websites on WordPress, execute staging-to-production environment migrations, and implement custom theme designs using Elementor. Perform quality assurance, SEO integrations, and responsive mobile layout optimization.</p>
         </div>
         <div class="card">
+            <h3>Facilities Assistant</h3>
+            <p><strong>University of Virginia Aquatics and Fitness Center</strong> | August 2024 – May 2026</p>
+            <p>Provided customer service at the welcome desk by processing patron memberships and delivering information regarding facilities and services to over 2,000 gym-goers daily.</p>
+        </div>
+        <div class="card">
             <h3>Head Teaching Assistant</h3>
-            <p><strong>Master Tutoring</strong> | Jun 2022 – Aug 2024</p>
+            <p><strong>Nationwide Master Tutoring</strong> | Jun 2022 – Aug 2024</p>
             <p>Led a team of teaching assistants, designed lesson plans, and managed administrative data to support daily course operations and student success.</p>
         </div>
     </div>
@@ -144,19 +185,25 @@
     <!-- Projects Section -->
     <div id="projects" class="section">
         <h2>Selected Projects</h2>
+
         <div class="card">
-            <h3>UVA Trading App</h3>
-            <p class="tech-stack">Django, PostgreSQL, Bootstrap, Heroku</p>
-            <p>A full-stack platform enabling university students to exchange goods without monetary transactions, promoting sustainable reuse within the campus community.</p>
+            <img class="card-img-top" src="" alt="Preview of UVA Bartering App" class="project-image">
+            <div class="card-body">
+                <h3>UVA Bartering App</h3>
+                <p class="tech-stack">Django, Python, HTML/CSS, PostgreSQL, Bootstrap, Git, Heroku</p>
+                <p>A full-stack platform allowing university students to exchange goods without monetary transactions, promoting sustainable reuse within the campus community.</p>
+            </div>
         </div>
         <div class="card">
-            <h3>Campus Maps</h3>
-            <p class="tech-stack">Android, Kotlin, Jetpack Compose, Room SQLite, Google Maps SDK</p>
-            <p>An Android application that retrieves JSON data from a campus placemarks API to display dynamic locations, filtering map markers based on custom user tags and storing preferences locally.</p>
+            <h3>Campus Restroom Map</h3>
+            <p class="tech-stack">Android, Kotlin, Jetpack Compose, Firebase Auth, Cloud Firestore</p>
+            <img src="" alt="Preview of Campus Restroom App" class="project-image">
+            <p>A collaborative native Android application designed to help the university community easily locate campus bathrooms. Built with a modern declarative UI using Jetpack Compose, the app integrates Firebase Authentication for secure user access and relies on Cloud Firestore for real-time backend data management and syncing.</p>
         </div>
         <div class="card">
             <h3>Fitness Tracker</h3>
-            <p class="tech-stack">JavaScript, PHP, Bootstrap, PostgreSQL, Docker</p>
+            <p class="tech-stack">JavaScript, HTML/ CSS, PHP, Bootstrap, PostgreSQL, Docker</p>
+            <img src="" alt="Preview of Fitness Tracker" class="project-image">
             <p>A full-stack web application featuring relational database schemas, session management, and dynamic tracking controllers, developed entirely within a containerized environment.</p>
         </div>
     </div>
