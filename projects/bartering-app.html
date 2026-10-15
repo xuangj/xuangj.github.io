@@ -95,7 +95,6 @@
         /* Carousel */
         .carousel-item img {
             width: 100%;
-            height: 500px;
             object-fit: cover;
             object-position: center;
             border-radius: 8px;
@@ -121,6 +120,12 @@
             margin-top: 2.5rem;
             margin-bottom: 1rem;
             font-size: 1.5rem;
+        }
+        .content h4 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 0.9rem;
+            font-size: 1.3rem;
         }
         .content p, .content li {
             font-size: 1.1rem;
@@ -160,17 +165,6 @@
         .action-links a.outline:hover {
             background-color: #eaeaea;
         }
-
-        /* Carousel */
-        .carousel-indicators [data-bs-target] {
-            background-color: #ff5722;
-            opacity: 0.5;
-        }
-        /* Change the color of the active indicator */
-        .carousel-indicators .active {
-            background-color: #ff5722;
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
@@ -195,8 +189,7 @@
     <h1>UVA Bartering App</h1>
     <p class="tech-stack">Django, Python, HTML/CSS, PostgreSQL, Bootstrap, Git, Heroku</p>
 
-    <!-- Hero Image -->
-    <img src="../assets/bartering_app/home.png" alt="UVA Bartering App Screenshot" class="hero-image">
+    <!-- Image Carousel -->
     <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false">
         <ol class="carousel-indicators">
             <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -208,7 +201,7 @@
             <li data-target="#carousel" data-slide-to="6"></li>
             <li data-target="#carousel" data-slide-to="7"></li>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="background-color: rgb(235, 235, 235);">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="../assets/bartering_app/home.png" alt="first slide">
             </div>
@@ -247,30 +240,44 @@
     <!-- Project Content -->
     <div class="content">
         <h2>Overview</h2>
-        <p>A full-stack platform allowing university students to exchange goods without monetary transactions, promoting sustainable reuse within the campus community.</p>
+        <p>The UVA Trading App is a full-stack peer-to-peer trading platform designed to help students exchange goods and reduce waste, promoting sustainable campus reuse. Built with Django and PostgreSQL, the application provides a complete ecosystem for cashless exchanges where users can easily list items, submit and track trade offers, and communicate securely via built-in direct messaging.</p>
 
         <h2>My Role & Contributions</h2>
-        <p>Explain what you specifically built here. For example:</p>
+        <h4>Core Trading & Offer Workflow</h4>
         <ul>
-            <li>Designed and implemented the PostgreSQL database schema to handle user accounts, item listings, and transaction histories.</li>
-            <li>Built the front-end using Bootstrap and custom CSS for a responsive, accessible mobile experience.</li>
-            <li>Deployed the application using Heroku with continuous integration via Git.</li>
+            <li>Offer Lifecycle Management: Engineered the end-to-end trading logic, allowing users to submit offers on individual listings and track their status (pending, accepted, or denied) through a custom "My Trades" dashboard.</li>
+            <li>Direct Messaging System: Built and connected a database-backed direct messaging feature to facilitate secure, real-time communication between buyers and sellers.</li>
+            <li>Dynamic Trade UI: Developed standalone trade pages and dynamic "Trade Cards" that update their titles and UI states based on the current relationship and status of the offer.</li>
         </ul>
+        <h4>User Identity & Profile Customization</h4>
+        <ul>
+            <li>Dynamic Profiles: Implemented comprehensive profile editing, allowing users to update their bio, university role, and trading interests.</li>
+            <li>Database Pre-population: Restructured the database models for "sustainability" and "trading interests" to pull from pre-populated options rather than requiring manual admin input, improving data consistency.</li>
+            <li>Role-Specific Experiences: Built custom routing logic to serve different landing page views based on the user's specific role at UVA.</li>
+        </ul>
+        <h4>Platform Moderation & Security</h4>
+        <ul>
+            <li>Role-Based Access Control (RBAC): Created a dedicated Moderator Dashboard that allows platform admins to view the entire user base, search for specific profiles by username or role, and actively moderate the platform.</li>
+            <li>Content Moderation: Gave moderators the ability to safely delete inappropriate posts and remove users, implementing confirmation modals to prevent accidental data loss.</li>
+        </ul>
+        <h4>UI/UX & Data Integrity</h4>
+            <ul>
+                <li>Real-Time Notifications: Designed and implemented a dynamic navigation bar badge that automatically updates with the user's count of pending trades.</li>
+                <li>Form Validation & Error Handling: Enforced strict data integrity by adding max-character constraints and required-field styling to forms, alongside custom error messages that display when invalid profile edits are attempted.</li>
+                <li>Post Management: Added intuitive front-end controls, including edit and delete buttons directly on the home page, allowing users to seamlessly manage their active listings.</li>
+            </ul>
 
-        <h2>Challenges & Solutions</h2>
-        <p>Write a brief paragraph about a technical hurdle you overcame. Interviewers love reading about how you problem-solve, not just the final result.</p>
     </div>
 
     <!-- Links out to GitHub or Live Site -->
     <div class="action-links">
-        <a href="https://github.com/xuangj/your-repo-link" target="_blank">View on GitHub</a>
-        <a href="#" target="_blank" class="outline">Live Demo</a>
+        <a href="https://github.com/xuangj/uva-bartering-app" target="_blank">View on GitHub</a>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYOIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
