@@ -387,25 +387,14 @@
             tab.addEventListener('click', () => setProjectTab(tab.dataset.projectTab));
         });
 
-        setProjectTab('fullstack');
-
         const hash = window.location.hash.replace('#', '');
-        if (hash && ['about', 'experience', 'projects'].includes(hash)) {
-            showSection(hash);
+        const selectedSection = hash === 'projects-wordpress' ? 'projects' : hash;
+        setProjectTab(hash === 'projects-wordpress' ? 'wordpress' : 'fullstack');
+
+        if (['about', 'experience', 'projects'].includes(selectedSection)) {
+            showSection(selectedSection);
         }
     });
-
-    function initFromHash() {
-        const hash = window.location.hash.replace('#', '');
-        if (!hash) return;
-
-        const validSections = ['about', 'experience', 'projects'];
-        if (validSections.includes(hash)) {
-            showSection(hash);
-        }
-    }
-
-    window.addEventListener('DOMContentLoaded', initFromHash);
 </script>
 
 </body>
