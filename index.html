@@ -4,76 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>Xuang Jin | Software Engineer</title>
     <style>
-        :root {
-            --primary-color: #111;
-            --accent-color: #394d60;
-            --text-color: #7a5814;
-            --bg-color: #ffecb8;
-        }
-        
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: var(--text-color); 
-            background-color: var(--bg-color);
-            line-height: 1.6; 
-        }
-
-        /* Nav Header */
-        header { 
-            background: #ffecb8; 
-            color: #7a5814;
-            padding: 2.5rem 0; 
-            margin-right: 5rem;
-            text-align: right; 
-            top: 0;
-            z-index: 100;
-        }
-
-        header nav a { 
-            display: inline-block;
-            background: #ffecb8; /* Must match the header background */
-            color: #7a5814;      /* Deep warm amber/brown text for readability */
-            text-decoration: none; 
-            margin: 0 14px; 
-            padding: 0.8rem 1.8rem;
-            font-weight: 600;
-            font-size: 1.05rem;
-            border: none;
-            border-radius: 999px;
-            cursor: pointer;
-            
-            /* Warm Neumorphic Shadow: Warm amber tint for shadow, bright white for highlight */
-            box-shadow: 
-                8px 8px 18px #d5c59a,
-                -8px -8px 18px #fff5e4;
-                
-            transition: all 0.2s ease;
-        }
-
-        /* Hover: Slightly higher lift */
-        header nav a:hover { 
-            color: #4a3810;
-            text-decoration: none;
-            box-shadow: 
-                10px 10px 22px rgba(184, 150, 78, 0.55),
-                -10px -10px 22px rgba(255, 255, 255, 1);
-            transform: translateY(-1px);
-        }
-
-        /* Active / Pressed: Inset shadow creates the pressed-down pill look */
-        header nav a.active-link,
-        header nav a:active { 
-            color: #4a3810;
-            box-shadow: 
-                inset 4px 4px 8px rgba(184, 150, 78, 0.5),
-                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
-            transform: translateY(0);
-        }
-
         /* Main Container */
         .container { 
             max-width: 100%; 
@@ -152,11 +85,29 @@
             color: var(--text-color);
         }
         #experience .card {
+            position: relative;
             box-shadow: 
                 8px 8px 18px #d5c59a,
                 -8px -8px 18px #fff5e4;
             
             transition: all 0.2s ease;
+        }
+        .experience-heading {
+            min-height: 72px;
+            padding-right: 72px;
+        }
+        #experience .experience-heading img {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            z-index: 1;
+            width: 115px;
+            height: 115px;
+            padding: 8px;
+            border-radius: 999px;
+            background: #fff;
+            object-fit: contain;
+            box-shadow: 4px 4px 12px rgba(122, 88, 20, 0.2);
         }
         .card:hover {
             text-decoration: none;
@@ -199,63 +150,6 @@
             font-weight: 500;
             margin-bottom: 15px; 
         }
-        
-        /* Contact Links */
-        .contact-links { 
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .contact-links a {
-            display: inline-block;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s ease;
-        }
-        .contact-links a:hover { 
-            opacity: 0.7;
-        }
-        .contact-links svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* Nav Footer */
-        footer { 
-            background: #ffe6a1; 
-            color: #7a5814; 
-            padding: 1rem 0; 
-            text-align: center; 
-            position: sticky;
-            z-index: 100;
-        }
-        footer nav a { 
-            display: inline-block;
-            color: #7a5814; 
-            text-decoration: none; 
-            margin: 0 15px; 
-            padding: 0.25rem 0.75rem;
-            font-weight: 500; 
-            font-size: 12px;
-            cursor: pointer; 
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-            border-radius: 999px;
-        }
-        footer nav a:hover, footer nav a.active-link { 
-            color: #7a5814; 
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        footer .contact-links a {
-            color: #7a5814;
-            margin-top: -1rem;
-        }
     </style>
 </head>
 <body>
@@ -270,8 +164,8 @@
 
 <div class="container">
     <!-- About Section -->
-    <div id="about" class="section active" style="padding-top: 40px; padding-left: 175px; padding-right: 175px;">
-        <div class="row">
+    <div id="about" class="section active" style="padding-left: 150px; padding-right: 150px;">
+        <div class="row" style="margin-bottom: 8rem;">
             <div class="col-md-6">
                 <img class="profile-photo" src="assets/linkedinpfp.jpg" alt="Headshot image" />
             </div>
@@ -283,36 +177,39 @@
                 <p>My technical stack includes React, Next.js, Django, Python, Java, JavaScript, and native Android development using Kotlin and Jetpack Compose. 
                     In my work, I strive to build user-centric applications that consider intuitive workflows, thoughtful design, and responsive interactions. 
                 </p>
+                 <div class="contact-links">
+                    <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
+                        Resume
+                    </a>
+                    <a href="https://github.com/xuangj" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/xuang-jin" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="mailto:xuangjin@gmail.com">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Email
+                    </a>
+                </div>
             </div>
-        </div>
-        
-        
-        <div class="contact-links">
-            <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
-                Resume
-            </a>
-            <a href="https://github.com/xuangj" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                GitHub
-            </a>
-            <a href="https://linkedin.com/in/xuang-jin" target="_blank">
-                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn
-            </a>
-            <a href="mailto:xuangjin@gmail.com">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                Email
-            </a>
         </div>
     </div>
 
     <!-- Experience Section -->
-    <div id="experience" class="section" style="padding-top: 20px; padding-left: 175px; padding-right: 175px;">
+    <div id="experience" class="section" style="padding-left: 175px; padding-right: 175px;">
         <h1 style="margin-bottom: 30px;">Work Experience</h1>
         <div class="card">
-            <h3>Web Developer</h3>
-            <p><strong>Timberline Team Consulting</strong> | Jun 2025 – Present</p>
+            <div class="experience-heading">
+                <div>
+                    <h3>Web Developer</h3>
+                    <p><strong>Timberline Team Consulting</strong> | Jun 2025 – Present</p>
+                </div>
+                <img src="assets/logos/timberline-logo.png" alt="Timberline Team Consulting logo">
+            </div>
             <ul>
                 <li>
                     Engineered and maintained high-availability web solutions for thirteen client properties, implementing automated smoke-testing protocols to ensure cross-device performance, accessibility compliance, and technical stability. 
@@ -326,8 +223,13 @@
             </ul>
         </div>
         <div class="card">
-            <h3>Facilities Assistant</h3>
-            <p><strong>University of Virginia Aquatics and Fitness Center</strong> | August 2024 – May 2026</p>
+            <div class="experience-heading">
+                <div>
+                    <h3>Facilities Assistant</h3>
+                    <p><strong>University of Virginia Aquatics and Fitness Center</strong> | August 2024 – May 2026</p>
+                </div>
+                <img src="assets/logos/uva-rec-logo.jpg" alt="UVA Recreation logo">
+            </div>
             <ul>
                 <li>
                     Provided customer service at the welcome desk by processing patron memberships and delivering information regarding facilities and services to over 2,000 gym-goers daily.
@@ -338,8 +240,13 @@
             </ul>
         </div>
         <div class="card">
-            <h3>Head Teaching Assistant</h3>
-            <p><strong>Nationwide Master Tutoring</strong> | Jun 2022 – Aug 2024</p>
+            <div class="experience-heading">
+                <div>
+                    <h3>Head Teaching Assistant</h3>
+                    <p><strong>Nationwide Master Tutoring</strong> | Jun 2022 – Aug 2024</p>
+                </div>
+                <img src="assets/logos/nationwide-logo.png" alt="Nationwide Master Tutoring logo">
+            </div>
             <ul>
                 <li>
                     Led a team of 5 teaching assistants to design lesson plans and manage administrative data to support daily course operations and student success.
@@ -352,7 +259,7 @@
     </div>
 
     <!-- Projects Section -->
-    <div id="projects" class="section" style="padding-top: 20px;">
+    <div id="projects" class="section">
         <h1 style="margin-bottom: 30px;">Projects</h1>
         <div class="project-tabs" role="tablist" aria-label="Project categories">
             <button class="project-tab active" type="button" data-project-tab="fullstack" aria-selected="true">Full-Stack Projects</button>
@@ -436,7 +343,7 @@
         <a href="https://github.com/xuangj" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
-        <a href="www.linkedin.com/in/xuang-jin" target="_blank">
+        <a href="https://linkedin.com/in/xuang-jin" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
         <a href="mailto:xuangjin@gmail.com">

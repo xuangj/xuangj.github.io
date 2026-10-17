@@ -4,36 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles.css">
     <title>TagOut Technique Site Build | Project Details</title>
     <style>
         :root {
             --primary-color: #111;
-            --accent-color: #0056b3;
-            --text-color: #333;
-            --bg-color: #fafafa;
+            --accent-color: #394d60;
+            --text-color: #7a5814;
+            --bg-color: #ffecb8;
         }
 
         /* Nav Header */
         header { 
-            background: #6a819c; 
-            color: #fff; 
-            padding: 3rem 0; 
-            text-align: center; 
-            position: sticky;
+            background: #ffecb8; 
+            color: #7a5814;
+            padding: 2.5rem 0; 
+            margin-right: 5rem;
+            text-align: right; 
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+
         header nav a { 
-            color: #ccc; 
+            display: inline-block;
+            background: #ffecb8; /* Must match the header background */
+            color: #7a5814;      /* Deep warm amber/brown text for readability */
             text-decoration: none; 
-            margin: 0 15px; 
-            font-weight: 500; 
-            cursor: pointer; 
-            transition: color 0.2s ease;
+            margin: 0 14px; 
+            padding: 0.8rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            
+            /* Warm Neumorphic Shadow: Warm amber tint for shadow, bright white for highlight */
+            box-shadow: 
+                8px 8px 18px #d5c59a,
+                -8px -8px 18px #fff5e4;
+                
+            transition: all 0.2s ease;
         }
-        header nav a:hover, header nav a.active-link { 
-            color: #fff; 
+
+        /* Hover: Slightly higher lift */
+        header nav a:hover { 
+            color: #4a3810;
+            text-decoration: none;
+            box-shadow: 
+                10px 10px 22px rgba(184, 150, 78, 0.55),
+                -10px -10px 22px rgba(255, 255, 255, 1);
+            transform: translateY(-1px);
+        }
+
+        /* Active / Pressed: Inset shadow creates the pressed-down pill look */
+        header nav a.active-link,
+        header nav a:active { 
+            color: #4a3810;
+            box-shadow: 
+                inset 4px 4px 8px rgba(184, 150, 78, 0.5),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+            transform: translateY(0);
         }
         
         body { 
@@ -47,7 +77,7 @@
 
         .container { 
             max-width: 1000px; 
-            margin: 4rem auto; 
+            margin: 2rem auto; 
             padding: 0 20px; 
         }
 
@@ -73,7 +103,7 @@
         }
 
         /* Project Header */
-        h1 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 0.2rem; }
+        h1 { color: var(--text-color); font-size: 2.5rem; margin-bottom: 0.2rem; }
         .tech-stack { 
             color: var(--accent-color); 
             font-size: 1rem; 
@@ -93,12 +123,50 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
         /* Carousel */
+        #carousel {
+            position: relative;
+        }
         .carousel-item img {
             height: 100vh;
             /* width: 50vw; */
             object-fit: contain;
             object-position: center;
             border-radius: 8px;
+        }
+        .carousel-toggle {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 5;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 0;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.92);
+            color: #111;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .carousel-toggle svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        .carousel-toggle:focus-visible {
+            outline: 3px solid #ff5722;
+            outline-offset: 3px;
+        }
+        .carousel-toggle .play-icon,
+        .carousel-toggle[aria-pressed="false"] .play-icon {
+            display: none;
+        }
+        .carousel-toggle[aria-pressed="true"] .pause-icon {
+            display: none;
+        }
+        .carousel-toggle[aria-pressed="true"] .play-icon {
+            display: block;
         }
         /* Make arrows dark so they show up on white screenshots */
         .carousel-control-prev-icon,
@@ -117,10 +185,10 @@
 
         /* Content Sections */
         .content h2 {
-            color: var(--primary-color);
+            color: var(--font-color);
             margin-top: 2.5rem;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
         .content h4 {
             color: var(--primary-color);
@@ -136,12 +204,14 @@
             margin-bottom: 1.5rem;
             padding-left: 20px;
         }
+        .content .card {
+            width: 100%;
+        }
 
         /* Action Buttons */
         .action-links {
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid #eaeaea;
             display: flex;
             gap: 15px;
         }
@@ -193,6 +263,11 @@
     
     <!-- Image Carousel -->
     <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false">
+        <button id="carousel-toggle" class="carousel-toggle" type="button" aria-label="Pause carousel" aria-pressed="false">
+            <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+            <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <span>Pause</span>
+        </button>
         <ol class="carousel-indicators">
             <li data-target="#carousel" data-slide-to="0" class="active"></li>
             <li data-target="#carousel" data-slide-to="1"></li>
@@ -249,29 +324,66 @@
         <p>TagOut Technique is a specialized e-commerce and land management platform built for an Amish-owned hunting supply business. The company provides premium food plot seeds, herbicides, hunting blinds, and property consulting to help hunters transform their land and attract better prey. The core challenge of this project was engineering a digital storefront that respected the client's religious beliefs and anti-big-box philosophy, which restrict direct, continuous interaction with modern technology. To bridge this gap, I designed a custom e-commerce pipeline that allows customers to shop online seamlessly, but converts their cart into a PDF quote that is automatically routed via email to the client's offline order-processing system.</p>
 
         <h2>My Role & Contributions</h2>
-        <ul>
-            <li>Client Consultation & UX/UI Design: Led requirement-gathering interviews to deeply understand the client's unique business needs, target audience, and technological constraints. Translated these constraints into a comprehensive user interface wireframe using Canva, which was pitched to and approved by the client.</li>
-            <li>Custom E-Commerce Pipeline: Researched and architected an innovative order-processing workflow alongside my team to accommodate the tech-free requirements. Integrated WooCommerce for the customer-facing storefront and implemented a custom "quote" feature that dynamically generates a PDF cart summary and emails it directly to the client at the push of a button.</li>
-            <li>Frontend WordPress Development: Built the complete responsive website utilizing WordPress and the Elementor page builder, ensuring an intuitive and accessible browsing experience for hunting enthusiasts looking for gear and land management services.</li>
-            <li>Marketing Integration: Configured and connected Mailchimp to handle the company's newsletter subscriptions, establishing a scalable foundation for their ongoing community building and customer outreach efforts.</li>
-        </ul>
-    </div>
+        <div style="display: flex; flex-direction: row;">
+            <div class="card">
+                <ul>
+                    <li>Client Consultation & UX/UI Design: Led requirement-gathering interviews to deeply understand the client's unique business needs, target audience, and technological constraints. Translated these constraints into a comprehensive user interface wireframe using Canva, which was pitched to and approved by the client.</li>
+                    <li>Custom E-Commerce Pipeline: Researched and architected an innovative order-processing workflow alongside my team to accommodate the tech-free requirements. Integrated WooCommerce for the customer-facing storefront and implemented a custom "quote" feature that dynamically generates a PDF cart summary and emails it directly to the client at the push of a button.</li>
+                    <li>Frontend WordPress Development: Built the complete responsive website utilizing WordPress and the Elementor page builder, ensuring an intuitive and accessible browsing experience for hunting enthusiasts looking for gear and land management services.</li>
+                    <li>Marketing Integration: Configured and connected Mailchimp to handle the company's newsletter subscriptions, establishing a scalable foundation for their ongoing community building and customer outreach efforts.</li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="content">
-        <h2>Wireframe</h2>
-        <iframe src="../assets/tagout_site/TT-wireframe.pdf" width="100%" height="400px" style="border: 1px solid #eaeaea; border-radius: 8px; margin-bottom: 50px;"></iframe>   
-    </div>
+        <div class="content">
+            <h2>Wireframe</h2>
+            <iframe src="../assets/tagout_site/TT-wireframe.pdf" width="100%" height="400px" style="border: 1px solid #eaeaea; border-radius: 8px;"></iframe>   
+        </div>
     
 
-    <!-- Links out to GitHub or Live Site -->
-    <div class="action-links">
-        <a href="https://tagouttechnique.com" target="_blank">View Site</a>
-    </div>
+        <!-- Links out to GitHub or Live Site -->
+        <div class="action-links">
+            <a href="https://tagouttechnique.com" target="_blank">View Site</a>
+        </div>
+        </div>
 </div>
+<footer>
+    <nav>
+        <a data-target="about" class="active-link" onclick="showSection('about')">About</a>
+        <a data-target="experience" onclick="showSection('experience')">Experience</a>
+        <a data-target="projects" onclick="showSection('projects')">Projects</a>
+    </nav>
+    <div class="contact-links" style="justify-content: center;">
+        <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
+        </a>
+        <a href="https://github.com/xuangj" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/xuang-jin" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:xuangjin@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+    </div>
+</footer>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+<script>
+    const carouselToggle = document.getElementById('carousel-toggle');
+    const carouselToggleLabel = carouselToggle.querySelector('span');
+
+    carouselToggle.addEventListener('click', () => {
+        const isPaused = carouselToggle.getAttribute('aria-pressed') === 'true';
+        $('#carousel').carousel(isPaused ? 'cycle' : 'pause');
+        carouselToggle.setAttribute('aria-pressed', String(!isPaused));
+        carouselToggle.setAttribute('aria-label', isPaused ? 'Pause carousel' : 'Play carousel');
+        carouselToggleLabel.textContent = isPaused ? 'Pause' : 'Play';
+    });
+</script>
 </body>
 </html>

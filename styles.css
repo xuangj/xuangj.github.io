@@ -1,0 +1,139 @@
+:root {
+    --primary-color: #111;
+    --accent-color: #394d60;
+    --text-color: #7a5814;
+    --bg-color: #ffecb8;
+}
+
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-color); 
+    background-color: var(--bg-color);
+    line-height: 1.6; 
+}
+
+/* Nav Header */
+header { 
+    background: #ffecb8; 
+    color: #7a5814;
+    padding: 2.5rem 0; 
+    margin-right: 5rem;
+    text-align: right; 
+    top: 0;
+    z-index: 100;
+}
+
+header nav a { 
+    display: inline-block;
+    background: #ffecb8; /* Must match the header background */
+    color: #7a5814;      /* Deep warm amber/brown text for readability */
+    text-decoration: none; 
+    margin: 0 14px; 
+    padding: 0.8rem 1.8rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    
+    /* Warm Neumorphic Shadow: Warm amber tint for shadow, bright white for highlight */
+    box-shadow: 
+        8px 8px 18px #d5c59a,
+        -8px -8px 18px #fff5e4;
+        
+    transition: all 0.2s ease;
+}
+
+/* Hover: Slightly higher lift */
+header nav a:hover { 
+    color: #4a3810;
+    text-decoration: none;
+    box-shadow: 
+        10px 10px 22px rgba(184, 150, 78, 0.55),
+        -10px -10px 22px rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+}
+
+/* Active / Pressed: Inset shadow creates the pressed-down pill look */
+header nav a.active-link,
+header nav a:active { 
+    color: #4a3810;
+    box-shadow: 
+        inset 4px 4px 8px rgba(184, 150, 78, 0.5),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+    transform: translateY(0);
+}
+
+/* Contact Links */
+.contact-links { 
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.contact-links a {
+    display: inline-block;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+.contact-links a:hover { 
+    opacity: 0.7;
+}
+.contact-links svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+.content .card {
+    width: 50%;
+    background: #e3e9f0;
+    border: none;
+    border-radius: 50px; 
+    margin: 15px 15px;
+    padding: 20px 30px;
+    color: var(--text-color);
+    position: relative;
+    box-shadow: 
+        8px 8px 18px #d5c59a,
+        -8px -8px 18px #fff5e4;
+    
+    transition: all 0.2s ease;
+}
+
+/* Nav Footer */
+footer { 
+    background: #ffe6a1; 
+    color: #7a5814; 
+    padding: 1rem 0; 
+    text-align: center; 
+    position: sticky;
+    z-index: 100;
+}
+footer nav a { 
+    display: inline-block;
+    color: #7a5814; 
+    text-decoration: none; 
+    margin: 0 15px; 
+    padding: 0.25rem 0.75rem;
+    font-weight: 500; 
+    font-size: 12px;
+    cursor: pointer; 
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    border-radius: 999px;
+}
+footer nav a:hover, footer nav a.active-link { 
+    color: #7a5814; 
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+footer .contact-links a {
+    color: #7a5814;
+    margin-top: -1rem;
+}
