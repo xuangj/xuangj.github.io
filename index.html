@@ -8,9 +8,9 @@
     <style>
         :root {
             --primary-color: #111;
-            --accent-color: #0056b3;
-            --text-color: #333;
-            --bg-color: #fafafa;
+            --accent-color: #394d60;
+            --text-color: #7a5814;
+            --bg-color: #ffecb8;
         }
         
         body { 
@@ -24,32 +24,61 @@
 
         /* Nav Header */
         header { 
-            background: #6a819c; 
-            color: #fff; 
-            padding: 3rem 0; 
-            text-align: center; 
-            position: sticky;
+            background: #ffecb8; 
+            color: #7a5814;
+            padding: 2.5rem 0; 
+            margin-right: 5rem;
+            text-align: right; 
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+
         header nav a { 
-            color: #ccc; 
+            display: inline-block;
+            background: #ffecb8; /* Must match the header background */
+            color: #7a5814;      /* Deep warm amber/brown text for readability */
             text-decoration: none; 
-            margin: 0 15px; 
-            font-weight: 500; 
-            cursor: pointer; 
-            transition: color 0.2s ease;
+            margin: 0 14px; 
+            padding: 0.8rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            
+            /* Warm Neumorphic Shadow: Warm amber tint for shadow, bright white for highlight */
+            box-shadow: 
+                8px 8px 18px #d5c59a,
+                -8px -8px 18px #fff5e4;
+                
+            transition: all 0.2s ease;
         }
-        header nav a:hover, header nav a.active-link { 
-            color: #fff; 
+
+        /* Hover: Slightly higher lift */
+        header nav a:hover { 
+            color: #4a3810;
+            text-decoration: none;
+            box-shadow: 
+                10px 10px 22px rgba(184, 150, 78, 0.55),
+                -10px -10px 22px rgba(255, 255, 255, 1);
+            transform: translateY(-1px);
+        }
+
+        /* Active / Pressed: Inset shadow creates the pressed-down pill look */
+        header nav a.active-link,
+        header nav a:active { 
+            color: #4a3810;
+            box-shadow: 
+                inset 4px 4px 8px rgba(184, 150, 78, 0.5),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+            transform: translateY(0);
         }
 
         /* Main Container */
         .container { 
-            max-width: 1000px; 
-            margin: 3rem auto; 
-            padding: 0 20px; 
+            max-width: 100%; 
+            margin: 2rem auto; 
+            padding: 0 100px;
         }
         .row {
             display: flex;
@@ -57,8 +86,8 @@
             margin: 0 -15px;
         }
         .row > .card.col {
-            flex: 0 0 calc(50% - 30px);
-            max-width: calc(50% - 30px);
+            flex: 0 0 calc(33.333% - 30px);
+            max-width: calc(33.333% - 30px);
             margin: 0 15px 20px;
             box-sizing: border-box;
             padding: 0;
@@ -72,27 +101,72 @@
         .section.active { 
             display: block; 
         }
+        .project-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1.5rem 0 1rem;
+        }
+        .project-tab {
+            background: #ffe6a1;
+            border: none;
+            border-top-left-radius: 999px;
+            border-top-right-radius: 999px;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 8px 8px 18px #d5c59a;
+            transition: all 0.2s ease;
+        }
+        .project-tab:hover {
+            transform: translateY(-1px);
+        }
+        .project-tab.active {
+            box-shadow: inset 4px 4px 8px rgba(184, 150, 78, 0.5);
+            color: #4a3810;
+        }
+        .project-panel {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .project-panel.active {
+            display: block;
+        }
         @keyframes fadeIn { 
             from { opacity: 0; transform: translateY(10px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
 
         /* Typography & Elements */
-        h1, h2, h3 { color: var(--primary-color); }
+        h1, h2, h3 { color: var(--text-color); }
         h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         
         .card { 
-            background: #fff;
-            border: 1px solid #eaeaea; 
-            border-radius: 8px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
-            transition: transform 0.2s ease;
+            background: #e3e9f0;
+            border: none;
+            border-radius: 50px; 
+            margin-bottom: 50px; 
             padding: 30px;
+            color: var(--text-color);
+        }
+        #experience .card {
+            box-shadow: 
+                8px 8px 18px #d5c59a,
+                -8px -8px 18px #fff5e4;
+            
+            transition: all 0.2s ease;
         }
         .card:hover {
+            text-decoration: none;
+            
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        #experience .card:hover {
+            box-shadow: 
+                10px 10px 22px rgba(184, 150, 78, 0.55),
+                -10px -10px 22px #fff5e4;
         }
         .card h3 { margin-top: 0; margin-bottom: 5px; }
         .card-body {
@@ -107,6 +181,17 @@
             border-top-right-radius: 8px;
             display: block;
             background: #f3f3f3;
+        }
+        .profile-photo {
+            width: 100%;
+            max-width: 420px;
+            height: 420px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 500px;
+            display: block;
+            
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
         .tech-stack { 
             color: var(--accent-color); 
@@ -139,25 +224,68 @@
             height: 20px;
             fill: currentColor;
         }
+
+        /* Nav Footer */
+        footer { 
+            background: #ffe6a1; 
+            color: #7a5814; 
+            padding: 1rem 0; 
+            text-align: center; 
+            position: sticky;
+            z-index: 100;
+        }
+        footer nav a { 
+            display: inline-block;
+            color: #7a5814; 
+            text-decoration: none; 
+            margin: 0 15px; 
+            padding: 0.25rem 0.75rem;
+            font-weight: 500; 
+            font-size: 12px;
+            cursor: pointer; 
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            border-radius: 999px;
+        }
+        footer nav a:hover, footer nav a.active-link { 
+            color: #7a5814; 
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        footer .contact-links a {
+            color: #7a5814;
+            margin-top: -1rem;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <nav>
-        <a id="nav-about" class="active-link" onclick="showSection('about')">About</a>
-        <a id="nav-experience" onclick="showSection('experience')">Experience</a>
-        <a id="nav-projects" onclick="showSection('projects')">Projects</a>
+        <a data-target="about" class="active-link" onclick="showSection('about')">About</a>
+        <a data-target="experience" onclick="showSection('experience')">Experience</a>
+        <a data-target="projects" onclick="showSection('projects')">Projects</a>
     </nav>
 </header>
 
 <div class="container">
     <!-- About Section -->
-    <div id="about" class="section active">
-        <h1>Hi, I'm Xuang Jin.</h1>
-        <p>I am a full-stack web developer specializing in UI design and scalable web solutions. I recently graduated from the University of Virginia with a degree in Computer Science with a minor in Data Science.</p>
-        <p>My technical stack includes React, Next.js, Django, Python, Java, JavaScript, and native Android development using Kotlin and Jetpack Compose. 
-            In my work, I strive to build user-centric applications that consider intuitive workflows, thoughtful design, and responsive interactions. </p>
+    <div id="about" class="section active" style="padding-top: 40px; padding-left: 175px; padding-right: 175px;">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="profile-photo" src="assets/linkedinpfp.jpg" alt="Headshot image" />
+            </div>
+            <div class="col-md-6">
+                <h1 style="margin-bottom: 2rem;">
+                    Hey! I'm <strong style="color: #cfe1f3;">Xuang Jin</strong>.
+                </h1>
+                <p>I am a <strong>full-stack web developer</strong> specializing in UI design and scalable web solutions. I recently graduated from the <strong>University of Virginia</strong> (Go Hoos!) with a degree in Computer Science with a minor in Data Science.</p>
+                <p>My technical stack includes React, Next.js, Django, Python, Java, JavaScript, and native Android development using Kotlin and Jetpack Compose. 
+                    In my work, I strive to build user-centric applications that consider intuitive workflows, thoughtful design, and responsive interactions. 
+                </p>
+            </div>
+        </div>
+        
         
         <div class="contact-links">
             <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
@@ -168,7 +296,7 @@
                 <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 GitHub
             </a>
-            <a href="www.linkedin.com/in/xuang-jin" target="_blank">
+            <a href="https://linkedin.com/in/xuang-jin" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
             </a>
@@ -180,8 +308,8 @@
     </div>
 
     <!-- Experience Section -->
-    <div id="experience" class="section">
-        <h2 style="margin-bottom: 30px;">Work Experience</h2>
+    <div id="experience" class="section" style="padding-top: 20px; padding-left: 175px; padding-right: 175px;">
+        <h1 style="margin-bottom: 30px;">Work Experience</h1>
         <div class="card">
             <h3>Web Developer</h3>
             <p><strong>Timberline Team Consulting</strong> | Jun 2025 – Present</p>
@@ -214,88 +342,151 @@
             <p><strong>Nationwide Master Tutoring</strong> | Jun 2022 – Aug 2024</p>
             <ul>
                 <li>
-                    Led a team of teaching assistants, designed lesson plans, and managed administrative data to support daily course operations and student success.
+                    Led a team of 5 teaching assistants to design lesson plans and manage administrative data to support daily course operations and student success.
+                </li>
+                <li>
+                    Held office hours to provide supplemental help for students.
                 </li>
             </ul>
         </div>
     </div>
 
     <!-- Projects Section -->
-    <div id="projects" class="section">
-        <h2>Full-Stack Projects</h2>
-        <div class="row">
-            <div class="card col">
-                <img class="card-img-top" src="assets/bartering_app/home.png" alt="Preview of UVA Bartering App">
-                <div class="card-body">
-                    <h3>UVA Bartering App</h3>
-                    <p class="tech-stack">Django, Python, HTML/CSS, PostgreSQL, Bootstrap, Git, Heroku</p>
-                    <p>A full-stack platform allowing university students to exchange goods without monetary transactions, promoting sustainable reuse within the campus community.</p>
-                    <a href="projects/bartering-app.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+    <div id="projects" class="section" style="padding-top: 20px;">
+        <h1 style="margin-bottom: 30px;">Projects</h1>
+        <div class="project-tabs" role="tablist" aria-label="Project categories">
+            <button class="project-tab active" type="button" data-project-tab="fullstack" aria-selected="true">Full-Stack Projects</button>
+            <button class="project-tab" type="button" data-project-tab="wordpress" aria-selected="false">WordPress Projects</button>
+        </div>
+
+        <div class="project-panel active" id="project-panel-fullstack" data-project-panel="fullstack">
+            <div class="row">
+                <div class="card col">
+                    <img class="card-img-top" src="assets/bartering_app/home.png" alt="Preview of UVA Bartering App">
+                    <div class="card-body">
+                        <h3>UVA Bartering App</h3>
+                        <p class="tech-stack">Django, Python, HTML/CSS, PostgreSQL, Bootstrap, Git, Heroku</p>
+                        <p>A full-stack platform allowing university students to exchange goods without monetary transactions, promoting sustainable reuse within the campus community.</p>
+                        <a href="projects/bartering-app.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                    </div>
                 </div>
-            </div>
-            <div class="card col">
-                <img class="card-img-top" src="assets/bathroom_tracker_app/BAU-user-profile.png" alt="Preview of Campus Restroom App">
-                <div class="card-body">
-                    <h3>Campus Restroom Map</h3>
-                    <p class="tech-stack">Android, Kotlin, Jetpack Compose, Firebase Auth, Cloud Firestore</p>
-                    <p>A collaborative native Android application designed to help the university community easily locate campus bathrooms. Built with a modern declarative UI using Jetpack Compose, the app integrates Firebase Authentication for secure user access and relies on Cloud Firestore for real-time backend data management and syncing.</p>
-                    <a href="projects/bathroom-app.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                <div class="card col">
+                    <img class="card-img-top" src="assets/bathroom_tracker_app/BAU-user-profile.png" alt="Preview of Campus Restroom App">
+                    <div class="card-body">
+                        <h3>Campus Restroom Map</h3>
+                        <p class="tech-stack">Android, Kotlin, Jetpack Compose, Firebase Auth, Cloud Firestore</p>
+                        <p>A collaborative native Android application designed to help the university community easily locate campus bathrooms.</p>
+                        <a href="projects/bathroom-app.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                    </div>
                 </div>
-            </div>
-            <div class="w-100"></div>
-            <div class="card col">
-                <img class="card-img-top" src="assets/portfolio/Portfolio-desktop.png" alt="Preview of Portfolio">
-                <div class="card-body">
-                    <h3>Portfolio</h3>
-                    <p class="tech-stack">HTML/CSS, Bootstrap, Git, Canva</p>
+                <div class="card col">
+                    <img class="card-img-top" src="assets/portfolio/Portfolio-desktop.png" alt="Preview of Portfolio">
+                    <div class="card-body">
+                        <h3>Portfolio</h3>
+                        <p class="tech-stack">HTML/CSS, Bootstrap, Git, Canva</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <h2>WordPress Projects</h2>
-        <div class="row">
-            <div class="card col">
-                <img class="card-img-top" src="assets/tagout_site/TT-desktop-home.png" alt="Preview of TagOut Site">
-                <div class="card-body">
-                    <h3>TagOut Technique Site</h3>
-                    <p class="tech-stack">WordPress, Elementor, PHP, HTML/CSS, Canva</p>
-                    <p></p>
-                    <a href="projects/tagout-site.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+
+        <div class="project-panel" id="project-panel-wordpress" data-project-panel="wordpress">
+            <div class="row">
+                <div class="card col">
+                    <img class="card-img-top" src="assets/tagout_site/TT-desktop-home.png" alt="Preview of TagOut Site">
+                    <div class="card-body">
+                        <h3>TagOut Technique Site</h3>
+                        <p class="tech-stack">WordPress, Elementor, PHP, HTML/CSS, Canva</p>
+                        <p></p>
+                        <a href="projects/tagout-site.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                    </div>
                 </div>
-            </div>
-            <div class="card col">
-                <img class="card-img-top" src="assets/westwind_site/WW-home-desktop.png" alt="Preview of WestWind Site">
-                <div class="card-body">
-                    <h3>WestWind Wildlife Site</h3>
-                    <p class="tech-stack">WordPress, Elementor, PHP, HTML/CSS, Canva</p>
-                    <p></p>
-                    <a href="projects/westwind-site.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                <div class="card col">
+                    <img class="card-img-top" src="assets/westwind_site/WW-home-desktop.png" alt="Preview of WestWind Site">
+                    <div class="card-body">
+                        <h3>WestWind Wildlife Site</h3>
+                        <p class="tech-stack">WordPress, Elementor, PHP, HTML/CSS, Canva</p>
+                        <p></p>
+                        <a href="projects/westwind-site.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                    </div>
                 </div>
-            </div>
-            <div class="card col">
-                <img class="card-img-top" src="assets/yingling_site/YB-desktop-home.png" alt="Preview of Yingling Builders Site">
-                <div class="card-body">
-                    <h3>Yingling Builders Transition Build</h3>
-                    <p class="tech-stack">WordPress, Elementor, PHP, HTML/CSS</p>
-                    <p></p>
-                    <a href="projects/yingling-site.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                <div class="card col">
+                    <img class="card-img-top" src="assets/yingling_site/YB-desktop-home.png" alt="Preview of Yingling Builders Site">
+                    <div class="card-body">
+                        <h3>Yingling Builders Transition Build</h3>
+                        <p class="tech-stack">WordPress, Elementor, PHP, HTML/CSS</p>
+                        <p></p>
+                        <a href="projects/yingling-site.html" class="stretched-link" style="color: var(--accent-color); font-weight: 500;">Read More →</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<footer>
+    <nav>
+        <a data-target="about" class="active-link" onclick="showSection('about')">About</a>
+        <a data-target="experience" onclick="showSection('experience')">Experience</a>
+        <a data-target="projects" onclick="showSection('projects')">Projects</a>
+    </nav>
+    <div class="contact-links" style="justify-content: center;">
+        <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
+        </a>
+        <a href="https://github.com/xuangj" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="www.linkedin.com/in/xuang-jin" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:xuangjin@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+    </div>
+</footer>
+
 <script>
+    function setProjectTab(tabName) {
+        document.querySelectorAll('.project-tab').forEach(tab => {
+            const isActive = tab.dataset.projectTab === tabName;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        document.querySelectorAll('.project-panel').forEach(panel => {
+            panel.classList.toggle('active', panel.dataset.projectPanel === tabName);
+        });
+    }
+
     function showSection(id) {
         // Hide all sections
         document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
         // Remove active styling from all nav links
-        document.querySelectorAll('header nav a').forEach(nav => nav.classList.remove('active-link'));
-        
+        document.querySelectorAll('header nav a, footer nav a').forEach(nav => nav.classList.remove('active-link'));
+
         // Show selected section
-        document.getElementById(id).classList.add('active');
-        // Add active styling to clicked link
-        document.getElementById('nav-' + id).classList.add('active-link');
+        const selectedSection = document.getElementById(id);
+        if (selectedSection) {
+            selectedSection.classList.add('active');
+        }
+
+        // Add active styling to matching nav links in both header and footer
+        document.querySelectorAll(`a[data-target="${id}"]`).forEach(nav => nav.classList.add('active-link'));
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.project-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => setProjectTab(tab.dataset.projectTab));
+        });
+
+        setProjectTab('fullstack');
+
+        const hash = window.location.hash.replace('#', '');
+        if (hash && ['about', 'experience', 'projects'].includes(hash)) {
+            showSection(hash);
+        }
+    });
 
     function initFromHash() {
         const hash = window.location.hash.replace('#', '');
