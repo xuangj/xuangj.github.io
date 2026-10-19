@@ -184,6 +184,7 @@
         <a data-target="about" class="active-link" onclick="showSection('about')">About</a>
         <a data-target="experience" onclick="showSection('experience')">Experience</a>
         <a data-target="projects" onclick="showSection('projects')">Projects</a>
+        <!-- <a data-target="fun-tidbits" onclick="showSection('fun tidbits')">Fun Tidbits</a> -->
     </nav>
 </header>
 
@@ -204,7 +205,7 @@
                     In my work, I strive to build user-centric applications that consider intuitive workflows, thoughtful design, and responsive interactions. 
                 </p>
                  <div class="contact-links">
-                    <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
+                    <a href="https://docs.google.com/document/d/1hFKcJtrTSMzTOzlTkNZAGFZPDFqV2czNVpz77lc00k8/edit?usp=sharing" target="_blank">
                         <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
                         Resume
                     </a>
@@ -354,6 +355,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Fun Tidbits Section 
+    <div id="fun-tidbits" class="section active" style="padding-left: 150px; padding-right: 150px;">
+        <div class="row" style="margin-bottom: 8rem;">
+        </div>
+    </div> -->
 </div>
 
 <footer>
@@ -363,7 +370,7 @@
         <a data-target="projects" onclick="showSection('projects')">Projects</a>
     </nav>
     <div class="contact-links" style="justify-content: center;">
-        <a href="/assets/Xuang_Jin_Resume.pdf" target="_blank">
+        <a href="https://docs.google.com/document/d/1hFKcJtrTSMzTOzlTkNZAGFZPDFqV2czNVpz77lc00k8/edit?usp=sharing" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> 
         </a>
         <a href="https://github.com/xuangj" target="_blank">
@@ -408,6 +415,19 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        const greeting = document.getElementById('intro-greeting');
+        const greetings = ["Hey! I'm", "你好！我是"];
+        let greetingIndex = 0;
+
+        setInterval(() => {
+            greetingIndex = (greetingIndex + 1) % greetings.length;
+            greeting.textContent = greetings[greetingIndex];
+
+            greeting.classList.remove('flip-in');
+            void greeting.offsetWidth; // Restart the animation.
+            greeting.classList.add('flip-in');
+        }, 3000);
+        
         const tabs = document.querySelectorAll('.project-tab');
         tabs.forEach(tab => {
             tab.addEventListener('click', () => setProjectTab(tab.dataset.projectTab));
@@ -421,18 +441,7 @@
             showSection(selectedSection);
         }
 
-        const greeting = document.getElementById('intro-greeting');
-        const greetings = ["Hey! I'm", "你好！我是"];
-        let greetingIndex = 0;
-
-        setInterval(() => {
-            greetingIndex = (greetingIndex + 1) % greetings.length;
-            greeting.textContent = greetings[greetingIndex];
-
-            greeting.classList.remove('flip-in');
-            void greeting.offsetWidth; // Restart the animation.
-            greeting.classList.add('flip-in');
-        }, 3000);
+        
     });
 </script>
 
